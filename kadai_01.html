@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG42_課題10_オーバーレイ制作</title>
+    <link rel="stylesheet" href="css/kadai01.css">
+</head>
+<body>
+<h1>オーバーレイ制作</h1>
+<section class="main">
+<div class="section_character_list">
+<ul class="character_list">
+
+
+   <li class="character_list_item">
+            <p><img src="images/character_aomori.png" alt=""></p>
+            <h1>青森県</h1>
+        <button class="overlay-event01" data-title="青森県" data-text="青森県の説明文" data-img="images/character_aomori.png">詳しく見る</button>
+    </li>
+    <li class="character_list_item">
+        <p><img src="images/character_kagawa.png" alt=""></p>
+        <h1>香川県</h1>
+        <button class="overlay-event01" data-title="香川県" data-text="香川県の説明文" data-img="images/character_kagawa.png">詳しく見る</button>
+    </li>
+    <!-- 他の県も同様に追加 -->
+</ul>
+
+</div>
+
+<!-- 1つ目の県のオーバーレイ -->
+<div id="overlay01" class="overlay">
+    <div class="flex">
+        <div id="overlay-inner01" class="overlay-inner">
+            <h1>タイトル</h1>
+            <p>ここにテキストが入ります。ここにテキストが入ります。</p>
+            <img src="images/character_aomori.png" alt="">
+            <button id="close-btn01" class="overlay-close" type="button">閉じる</button>
+        </div>
+    </div>
+</div>
+
+</section>
+<!-- 
+<section class="code">
+    <h1>実際に書いたコード</h1>
+    <ul>
+        <li><code>
+
+            
+        </code></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+    </ul>
+</section> -->
+
+<script src="js/kadai_01.js"></script>
+</body>
+</html>
