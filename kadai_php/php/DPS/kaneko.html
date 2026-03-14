@@ -1,0 +1,1375 @@
+<?php get_header(); ?>
+
+<div class="l-primary">
+<?php
+    $themePath = get_stylesheet_directory_uri();
+    if ( have_posts() ) :
+        while ( have_posts() ) :
+            the_post();
+            $terms = get_the_terms(get_the_ID(), 'correspondence_area');
+            $pref = '';
+            if ( $terms[0] ) {
+            $pref = $terms[0]->name;
+            }
+        ?>
+
+    <style>
+        .service_area_main.renewal {
+            font-family: "Noto Sans JP", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            overflow: hidden;
+        }
+        .service_area_main.renewal .service_area_cta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 1rem;
+            border: 8px solid #045C3E;
+            border-top: none;
+            padding: min(47vw, 46%) min(10%, 4%) min(5vw, 5%);
+            text-align: center;
+            background: url(<?= $themePath; ?>/images/renewal/bg_cta_top.png) no-repeat center top -1% / contain, linear-gradient(#D7F4D1, #fff);
+        }
+        .service_area_main.renewal .btn_wrapper.cta h3 {
+            font-size: min(5vw, 36px);
+            font-weight: 700;
+            color: #121212;
+            line-height: 1.5;
+            margin-bottom: .75em;
+            padding: 0.25em 0;
+            border-bottom: 2px solid #121212;
+        }
+        .service_area_main.renewal .btn_wrapper.cta {
+            background: rgba(255,255,255,0.9);
+            padding: 2%;
+            border-radius: 2%;
+            box-shadow: 0 0 0.5rem rgba(0,0,0,0.15);
+        }
+        .service_area_main.renewal .btn_wrapper a {
+            display: block;
+            transition: .4s;
+        }
+        .service_area_main.renewal .btn_wrapper a:hover {
+            transform: translateY(0.5rem);
+        }
+        .service_area_main.renewal .service_area_topimg {
+            padding: 0;
+        }
+        .service_area_main.renewal .service_area_content {
+            padding: 0;
+            margin: 0;
+        }
+
+        .service_area_main.renewal .key_visual_catch {
+            padding: 0.5em 0.5em 0.6em;
+            margin: 0;
+            background: #074831;
+            font-size: 5vw;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+        }
+        .service_area_main.renewal .key_visual_container {
+            position: relative;
+            padding-bottom: 1%;
+            background: url(<?= $themePath; ?>/images/renewal/img_kv_bg.png) no-repeat center bottom / contain, linear-gradient(#D7F4D1, #fff);
+            text-align: center;
+        }
+        .service_area_main.renewal .key_visual_logo {
+            width: 20vw;
+            padding: 2% 1%;
+            margin: 0;
+        }
+        .service_area_main.renewal .key_visual_logo img {
+            width: 100%;
+            height: auto;
+            vertical-align: bottom;
+        }
+        .service_area_main.renewal .key_visual_name {
+            position: relative;
+            display: inline-block;
+            width: auto;
+            min-width: 75vw;
+            padding: 0.25em 0.5em 0.3em;
+            border-radius: 3em;
+            background: #fff;
+            box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.5);
+            color: #074831;
+            font-size: min(7.5vw, 60px);
+            font-weight: 700;
+        }
+        .service_area_main.renewal .key_visual_name span.sub {
+            font-size: 75%;
+            font-weight: 700;
+            vertical-align: bottom;
+            display: inline-block;
+            padding-left: 0.1em;
+            color: #121212;
+        }
+        .service_area_main.renewal .key_visual_title {
+            width: 100%;
+            margin-top: -19%;
+        }
+        .service_area_main.renewal .key_visual_title img {
+            width: 100%;
+            height: auto;
+            vertical-align: bottom;
+        }
+        .service_area_main.renewal .key_visual_subtitle {
+            position: relative;
+            width: 90%;
+            padding: 0.25em 1em 0.35em;
+            border-radius: 4em;
+            margin: -4.5em auto 0.75em;
+            background: #045C3E;
+            color: #fff;
+            font-size: 4vw;
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .service_area_main.renewal .key_visual_business {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: baseline;
+            gap: 0.5em;
+            font-size: 3.7vw;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+        .service_area_main.renewal .key_visual_business::after {
+            content: "etc...";
+            color: #121212;
+        }
+        .service_area_main.renewal .key_visual_business_item {
+            color: #A58137;
+            background: #fff;
+            border: 2px solid #A58137;
+            display: inline-block;
+            padding: 0.25em 0.5em 0.3em;
+            border-radius: 0.1em;
+        }
+        .service_area_main.renewal .key_visual_point {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2%;
+            padding: 0 5%;
+            margin: 4% 0;
+        }
+        .service_area_main.renewal .key_visual_point_item img {
+            width: 100%;
+            height: auto;
+            vertical-align: bottom;
+        }
+
+        .service_area_main.renewal .sec01 {
+            padding-bottom: 10%;
+            background: #F4F4F4;
+        }
+        .service_area_main.renewal .sec01_title {
+            padding: 1.5em 0 1em;
+            font-size: 4.6vw;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .service_area_main.renewal .sec01_title span {
+            font-size: 127%;
+            color: #045C3E;
+        }
+        .service_area_main.renewal .sec01_subtitle {
+            position: relative;
+            padding: 5% 2%;
+            background: none;
+            z-index: 0;
+        }
+        .service_area_main.renewal .sec01_subtitle::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 0;
+            height: 0;
+            opacity: 0.8;
+            border-width: 20vw 50vw 0 50vw;
+            border-style: solid;
+            border-color: #E5F7E1 transparent transparent transparent;
+            z-index: -1;
+        }
+        .service_area_main.renewal .sec01_notes {
+            background: #fff;
+            width: 90%;
+            border-radius: 10px;
+            margin: 0 auto;
+            box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25);
+        }
+        .service_area_main.renewal .sec01_notes_title {
+            position: relative;
+            padding: 0.6em 0 0.5em;
+            border-radius: 10px 10px 0 0;
+            background: #045C3E;
+            color: #fff;
+            font-size: 4.35vw;
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .service_area_main.renewal .sec01_notes_title::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: -5%;
+            bottom: -70%;
+            width: 5em;
+            height: 5em;
+            background: url(<?= $themePath; ?>/images/renewal/img_sec01_deco01.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec01_notes_title span {
+            display: inline-block;
+            padding: 0 0.2em;
+            font-size: 150%;
+        }
+        .service_area_main.renewal .sec01_notes_ex {
+            position: relative;
+            padding: 0 5%;
+        }
+        .service_area_main.renewal .sec01_notes_ex_title {
+            padding: 1.75em 0 1em;
+            font-size: 4.1vw;
+            font-weight: 700;
+            text-align: center;
+        }
+        .service_area_main.renewal .sec01_notes_ex_content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2%;
+        }
+        .service_area_main.renewal .sec01_notes_ex_content .pic {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .service_area_main.renewal .sec01_notes_ex_content .title {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 0.5em 0 0.6em;
+            background: rgba(235, 246, 208, 0.9);
+            font-size: 3.7vw;
+            font-weight: bold;
+            text-align: center;
+        }
+        .service_area_main.renewal .sec01_notes_text {
+            position: relative;
+            padding: 0 5% 10%;
+            margin-top: 1em;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .service_area_main.renewal .sec01_notes_text::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            right: -5%;
+            bottom: -15%;
+            width: min(22vw, 200px);
+            height: min(22vw, 200px);
+            background: url(<?= $themePath; ?>/images/renewal/img_sec01_deco02.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec01_notes_text span {
+            color: #045C3E;
+            font-weight: 700;
+        }
+
+        .service_area_main.renewal .sec02_title img {
+            width: 100%;
+            height: auto;
+            vertical-align: bottom;
+        }
+        .service_area_main.renewal .sec02_worries {
+            padding: 5%;
+        }
+        .service_area_main.renewal .sec02_worries_item {
+            position: relative;
+            padding: 0.75em 0;
+            padding-left: 1.75em;
+            font-size: 4.6vw;
+            line-height: 1.25;
+        }
+        .service_area_main.renewal .sec02_worries_item:not(:first-child) {
+            border-top: 2px dotted #707070;
+        }
+        .service_area_main.renewal .sec02_worries_item::before {
+            content: "";
+            position: absolute;
+            top: 0.75em;
+            left: 0;
+            display: inline-block;
+            width: 1.25em;
+            height: 1.25em;
+            background: url(<?= $themePath; ?>/images/renewal/img_sec02_check.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec02_worries_item span {
+            font-weight: 700;
+        }
+        .service_area_main.renewal .sec02_worries_item .text-yellow {
+            color: #DBBC48;
+        }
+        .service_area_main.renewal .sec02_worries_item .text-green {
+            color: #074831;
+        }
+        .service_area_main.renewal .sec02_works {
+            width: 90%;
+            margin: 10% auto;
+            border: 2px solid #045C3E;
+            border-radius: 10px;
+            box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25);
+        }
+        .service_area_main.renewal .sec02_works_title {
+            position: relative;
+            border-radius: 7px 7px 0 0;
+            padding: 1.75em 0 0.75em;
+            margin-bottom: 1em;
+            background: #045C3E;
+            color: #fff;
+            font-size: 4.6vw;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.5em;
+        }
+        .service_area_main.renewal .sec02_works_title span {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 80%;
+            transform: translate(-50%, -50%);
+        }
+        .service_area_main.renewal .sec02_works_title span img {
+            width: 100%;
+            height: auto;
+            vertical-align: bottom;
+        }
+        .service_area_main.renewal .sec02_works_pic {
+            padding: 0 5%;
+        }
+        .service_area_main.renewal .sec02_works_pic img {
+            width: 100%;
+            height: auto;
+            vertical-align: bottom;
+        }
+        .service_area_main.renewal .sec02_works_pic02 img {
+            border-radius: 10px;
+            overflow: hidden;
+            /* box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25); */
+        }
+        .service_area_main.renewal .sec02_works_text {
+            padding: 0 5%;
+            margin: 1em 0;
+            font-size: 3.6vw;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .service_area_main.renewal .sec02_works_resources {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: baseline;
+            column-gap: 0.25em;
+            row-gap: 0.5em;
+            padding: 0 2.5%;
+            margin: 1.5em auto;
+            font-size: 3.1vw;
+            font-weight: 600;
+        }
+        .service_area_main.renewal .sec02_works_resources::after {
+            content: "etc...";
+            display: inline-block;
+        }
+        .service_area_main.renewal .sec02_works_resources_item {
+            padding: 0.35em 0.75em 0.4em;
+            border-radius: 3em;
+            background: #045C3E;
+            color: #fff;
+        }
+        .service_area_main.renewal .sec02_works_catch {
+            margin-top: 1em;
+            padding: 0.75em 0;
+            border-radius: 0 0 8px 8px;
+            background: linear-gradient(#F0D9AA, #F5F0DD, #F0D9AA);
+            color: #045C3E;
+            font-size: 3.6vw;
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .service_area_main.renewal .sec03 {
+            background: #F4F4F4;
+        }
+        .service_area_main.renewal .sec03_points {
+            padding: 0 5% 10%;
+        }
+        .service_area_main.renewal .sec03_points_item {
+            border-radius: 10px;
+            margin-top: 15%;
+            box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25);
+        }
+        .service_area_main.renewal .sec03_points_item:first-child {
+            margin-top: 10%;
+        }
+        .service_area_main.renewal .sec03_points_item .title {
+            position: relative;
+            padding: 1.5em 0 0.75em;
+            border-radius: 10px 10px 0 0;
+            background: #E5F7E1;
+            font-size: 5.4vw;
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .service_area_main.renewal .sec03_points_item:nth-child(3) .title {
+            padding-top: 1em;
+        }
+        .service_area_main.renewal .sec03_points_item .title::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            display: block;
+            width: 30%;
+            height: 2.5em;
+            transform: translate(-50%, -50%);
+        }
+        .service_area_main.renewal .sec03_points_item:nth-child(1) .title::before {
+            background: url(<?= $themePath; ?>/images/renewal/img_sec03_point01.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec03_points_item:nth-child(2) .title::before {
+            background: url(<?= $themePath; ?>/images/renewal/img_sec03_point02.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec03_points_item:nth-child(3) .title::before {
+            background: url(<?= $themePath; ?>/images/renewal/img_sec03_point03.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec03_points_item .title .text-green {
+            color: #1C5039;
+        }
+        .service_area_main.renewal .sec03_points_item .title .large {
+            display: inline-block;
+            padding: 0 0.1em;
+            font-size: 150%;
+        }
+        .service_area_main.renewal .sec03_points_item .title .small {
+            font-size: 90%;
+        }
+        .service_area_main.renewal .sec03_points_item .content {
+            padding: 5% 5% 10%;
+            background: #fff;
+            border-radius: 0 0 10px 10px;
+        }
+        .service_area_main.renewal .sec03_points_item .text {
+            margin-bottom: 1em;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.5;
+        }
+        .service_area_main.renewal .sec03_points_item .text span {
+            color: #1C5039;
+            font-weight: 700;
+        }
+        .service_area_main.renewal .sec03_points_item .catch {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 1em 0;
+            gap: 0.5em;
+            font-size: 16px;
+        }
+        .service_area_main.renewal .sec03_points_item .catch li {
+            width: 100%;
+            padding: 0.5em;
+            border-radius: 1em;
+            background: #F5F0DD;
+            color: #1C5039;
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .service_area_main.renewal .sec03_points_item .pic {
+            width: 100%;
+        }
+        .service_area_main.renewal .sec03_points_item .pic img {
+            width: 100%;
+            height: auto;
+            vertical-align: bottom;
+        }
+        .service_area_main.renewal .sec03_points_item .pic.round img {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .service_area_main.renewal .sec04 {
+            background: #E5F7E1;
+        }
+        .service_area_main.renewal .sec04_cases {
+            padding: 0 5% 10%;
+        }
+        .service_area_main.renewal .sec04_cases_item {
+            border-radius: 10px;
+            padding: 0 5% 5%;
+            margin-top: 15%;
+            box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25);
+            background: #fff;
+        }
+        .service_area_main.renewal .sec04_cases_item:first-child {
+            margin-top: 10%;
+        }
+        .service_area_main.renewal .sec04_cases_item .title {
+            position: relative;
+            padding: 1.5em 0 0.75em;
+            color: #1C5039;
+            font-size: 5.4vw;
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: center;
+            background: none;
+        }
+        .service_area_main.renewal .sec04_cases_item .title::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            display: block;
+            width: 30%;
+            height: 2.5em;
+            transform: translate(-50%, -50%);
+        }
+        .service_area_main.renewal .sec04_cases_item:nth-child(1) .title::before {
+            background: url(<?= $themePath; ?>/images/renewal/img_sec04_case01.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec04_cases_item:nth-child(2) .title::before {
+            background: url(<?= $themePath; ?>/images/renewal/img_sec04_case02.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec04_cases_item:nth-child(3) .title::before {
+            background: url(<?= $themePath; ?>/images/renewal/img_sec04_case03.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec04_cases_item:nth-child(4) .title::before {
+            background: url(<?= $themePath; ?>/images/renewal/img_sec04_case04.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec04_cases_item .title span {
+            color: #C39D4F;
+        }
+        .service_area_main.renewal .sec04_cases_item .detail {
+            padding: 5% 2.5%;
+            border-radius: 10px;
+            background: rgba(245, 240, 221, 0.8);
+            text-align: center;
+        }
+        .service_area_main.renewal .sec04_cases_item .detail_title {
+            padding-bottom: 0.25em;
+            border-bottom: 1px solid;
+            margin-bottom: 0.5em;
+            color: #121212;
+            font-size: 4.1vw;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+        .service_area_main.renewal .sec04_cases_item .detail_content {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .service_area_main.renewal .sec04_cases_item .detail_content .pic {
+            margin-top: 1em;
+            border: 4px solid #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+        .service_area_main.renewal .sec04_cases_item .profile {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 0.25em;
+            margin: 1em 0 0.5em;
+            color: #045C3E;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .service_area_main.renewal .sec04_cases_item .profile::before {
+            content: "";
+            display: inline-block;
+            width: 1.5em;
+            height: 1.5em;
+            background: url(<?= $themePath; ?>/images/renewal/img_sec04_customer.png) no-repeat center / contain;
+        }
+        .service_area_main.renewal .sec04_cases_item .text {
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .service_area_main.renewal .sec04_cases_item .text span {
+            color: #045C3E;
+            font-weight: 700;
+        }
+
+        .service_area_main.renewal .service_area_list h3 {
+            font-size: min(5vw, 24px);
+            font-weight: 700;
+            color: #fff;
+            background: #074831;
+            padding: 0.5em 1em 0.6em;
+            display: inline-block;
+            border-radius: 3em;
+            transform: translateY(-50%);
+            margin-bottom: -0.25em;
+        }
+        .service_area_main.renewal .service_area_list {
+            text-align: center;
+            border: 3px solid #074831;
+            border-radius: 1rem;
+            padding: 0 5% 5%;
+            background: #fff;
+            margin-bottom: min(10%, 50px);
+        }
+        .service_area_main.renewal .service_area_list_text {
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .service_area_main.renewal .service_area_list_catch {
+            padding: 0.5em 0.25em 0.6em;
+            margin-top: 1em;
+            margin-bottom: 0;
+            background: #F5F0DD;
+            color: #074831;
+            font-size: 80%;
+            font-weight: 800;
+            text-align: center;
+        }
+        .service_area_main.renewal .service_area_info {
+            padding: 5%;
+            background: url(<?= $themePath; ?>/images/renewal/img_info_bg.jpg) no-repeat center top -1% / contain;
+        }
+        .service_area_main.renewal .service_area_info_detail p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .service_area_main.renewal .service_area_info_detail h3 {
+            padding: 0.5em 0.5em 0.6em;
+            margin-bottom: 0.5em;
+            background: #074831;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+        .service_area_main.renewal .service_area_info_detail .service_area_content_text > h3:last-of-type {
+            margin-bottom: -1em;
+        }
+        .service_area_main.renewal .service_area_content_text {
+            padding: 0;
+        }
+        .service_area_main.renewal .service_area_info_header {
+            height: min(50vw, 380px);
+            position: relative;
+            margin: 0 -5%;
+        }
+        .service_area_main.renewal .service_area_info_header .service_area_name {
+            position: absolute;
+            top: min(2vw, 8%);
+            left: 50%;
+            width: 100%;
+            padding: 0.1em 0;
+            padding-right: 0;
+            background: none;
+            color: #121212;
+            font-size: min(7.7vw, 60px);
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: center;
+            text-shadow: 0 0 0.5em #fff;
+            transform: translateX(-50%);
+        }
+        .service_area_main.renewal .service_area_info_header .service_area_name .text-green {
+            color: #074831;
+        }
+        .service_area_main.renewal .service_area_info_header .service_area_name .sub {
+            display: inline-block;
+            padding-left: 0.1em;
+            color: #121212;
+            font-size: 75%;
+            font-weight: 700;
+            vertical-align: bottom;
+        }
+        .service_area_main.renewal .service_area_content_text img {
+            width: 100%;
+            margin: -0.5em 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .service_area_main.renewal .service_area_info_pic {
+            margin: 10% 0;
+        }
+        .service_area_main.renewal .service_area_faq h3 {
+            background: none;
+            text-align: center;
+            font-size: min(8vw, 40px);
+            color: #074831;
+        }
+        .service_area_main.renewal .service_area_faq .qa-label-servicearea {
+            background: #045C3E;
+            font-size: 1rem;
+            color: #fff;
+            padding: 0.75em;
+            padding-right: 2em;
+            border-radius: 0.25em;
+        }
+        .service_area_main.renewal .service_area_faq .qa-label-servicearea:hover {
+            cursor: pointer;
+        }
+        .service_area_main.renewal .service_area_faq p {
+            font-size: 1rem;
+        }
+        .service_area_main.renewal .service_area_faq .qa-content-servicearea p {
+            padding: 0.5em 0.75em;
+            background: none;
+            color: #121212;
+        }
+        .service_area_main.renewal .service_area_faq .qa-content-servicearea h4 {
+            padding: 0.5em 0.75em 0;
+            background: none;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #045C3E;
+        }
+        .service_area_main.renewal .service_area_faq .qa-content-servicearea h4 + p {
+            padding-top: 0;
+        }
+        .service_area_main.renewal .service_area_faq .qa-label:after {
+            mix-blend-mode: exclusion;
+            right: 1em;
+        }
+        .service_area_main.renewal .service_area_faq .service_area_q_and_a {
+            padding: 0 5%;
+        }
+        .service_area_main.renewal .service_area_faq h3 {
+            margin: 2em 0 1em;
+        }
+        .service_area_main.renewal .service_area_faq .qa-label:before {
+            content: "Q.";
+            padding-right: 0.5em;
+        }
+        .service_area_main.renewal .service_area_faq .qa-label {
+            display: flex;
+            justify-content: flex-start;
+            align-items: baseline;
+        }
+        .service_area_main.renewal .hide {
+            display: none !important;
+        }
+        .service_area_link a {
+            display: block;
+            margin-top: 1em;
+            text-decoration: underline;
+            color: #074831;
+            font-weight: bold;
+            transition: .35s;
+        }
+        .service_area_link a:hover {
+            opacity: 0.75;
+        }
+        @media (min-width: 768px){
+            .service_area_main.renewal .service_area_info_header {
+                height: min(32vw, 380px);
+            }
+            .service_area_main.renewal .service_area_info_header .service_area_name {
+                font-size: min(5vw, 60px);
+            }
+            .service_area_main.renewal .service_area_list_text {
+                font-size: 22px;
+            }
+            .service_area_main.renewal .service_area_list_catch {
+                font-size: 24px;
+            }
+            .service_area_main.renewal .service_area_info_detail h3 {
+                font-size: 28px;
+            }
+            .service_area_main.renewal .service_area_info_detail p {
+                font-size: 22px;
+            }
+            .service_area_main.renewal .service_area_faq .qa-label-servicearea {
+                font-size: 24px;
+            }
+            .service_area_main.renewal .service_area_faq p {
+                font-size: 22px;
+            }
+            .service_area_main.renewal .service_area_faq .qa-content-servicearea h4 {
+                font-size: 24px;
+            }
+            .service_area_main.renewal .service_area_faq .service_area_q_and_a {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .service_area_main.renewal .key_visual_business_item {
+                border-width: 2px;
+            }
+
+            .service_area_main.renewal .sec01_notes_ex_title {
+                font-size: min(2.7vw, 32px);
+            }
+            .service_area_main.renewal .sec01_notes_ex_content .title {
+                font-size: min(2vw, 24px);
+            }
+            .service_area_main.renewal .sec01_notes_text {
+                font-size: 22px;
+            }
+            .service_area_main.renewal .sec01_notes_text::after {
+                bottom: -25%;
+            }
+            .service_area_main.renewal .sec02_worries_item {
+                font-size: min(3.1vw, 38px);
+            }
+            .service_area_main.renewal .sec03_points_item .text {
+                font-size: 22px;
+            }
+            .service_area_main.renewal .sec03_points_item .catch {
+                font-size: 24px;
+            }
+            .service_area_main.renewal .sec04_cases_item .detail_content {
+                font-size: 24px;
+            }
+            .service_area_main.renewal .sec04_cases_item .text {
+                font-size: 22px;
+            }
+            .service_area_main.renewal .sec04_cases_item .profile {
+                font-size: 28px;
+            }
+        }
+        @media screen and (min-width: 992px){ 
+            .service_area_main.renewal .key_visual_catch {
+                font-size: min(3vw, 34px);
+            }
+            .service_area_main.renewal .key_visual_logo {
+                width: min(15vw, 160px);
+            }
+            .service_area_main.renewal .key_visual_subtitle {
+                font-size: min(2.5vw, 32px);
+            }
+            .service_area_main.renewal .key_visual_business {
+                font-size: min(2.3vw, 28px);
+            }
+            .service_area_main.renewal .key_visual_name {
+                min-width: min(75vw, 75%);
+                font-size: min(4.5vw, 54px);
+            }
+            .service_area_main.renewal .sec01_title {
+                font-size: min(3.1vw, 38px);
+            }
+            .service_area_main.renewal .sec01_notes_title {
+                font-size: min(3.1vw, 38px);
+            }
+            .service_area_main.renewal .sec01_subtitle:before {
+                border-width: calc((100vw - 320px - 4.0678vw) * 0.2) calc((100vw - 320px - 4.0678vw) * 0.5) 0;
+            }
+            .service_area_main.renewal .sec02_works_title {
+                font-size: min(3.1vw, 38px);
+            }
+            .service_area_main.renewal .sec02_works_text {
+                font-size: min(2.3vw, 28px);
+            }
+            .service_area_main.renewal .sec02_works_resources {
+                font-size: min(2vw, 24px);
+            }
+            .service_area_main.renewal .sec02_works_catch {
+                font-size: min(2.3vw, 28px);
+            }
+            .service_area_main.renewal .sec03_points_item .title {
+                font-size: min(3.4vw, 42px);
+            }
+            .service_area_main.renewal .sec04_cases_item .title {
+                font-size: min(3.4vw, 42px);
+            }
+            .service_area_main.renewal .sec04_cases_item .detail_title {
+                font-size: 28px;
+            }
+        }
+        @media screen and (min-width: 1181px){
+            .service_area_main.renewal .sec01_subtitle:before {
+                border-width: calc(810px* 0.2) calc(810px* 0.5) 0;
+            }
+        } 
+    </style>
+
+    <!-- ここからHTML -->
+
+
+
+    <div class="service_area_main renewal">
+        <!-- key_visual begin -->
+        <section class="service_area_h1_wrapper key_visual">
+            <div class="key_visual_container">
+                <ul class="key_visual_business">
+                    <li class="key_visual_business_item">事務系一般廃棄物</li>
+                    <li class="key_visual_business_item">産業廃棄物の処理</li>
+                    <li class="key_visual_business_item">段ボールの古紙の回収&amp;買収</li>
+                </ul>
+
+                <div class="key_visual_text">
+                    <div>
+                        <p>
+                            <span><?= esc_html($pref); ?><?php the_title(); ?></span><span>の</span><br>
+                            飲食店・事業所のゴミ定期回収<br>
+                            適正価格<br>
+                            無料診断します！<br>
+                        </p>
+                        
+
+                    </div>
+
+                    <h1 class="key_visual_img">
+                        <img src="images/img_top_kv01.png" alt="">
+                    </h1>
+                </div>
+            </div>
+
+            <div class="inner">
+                <img src="images/img_top_kv02.png" alt="専任アドバイザー" class="key_visual_img advisor_man">
+                <dl>
+                    <dt>様々なサービスやお困りごとにワンストップで対応</dt>
+                    <dd>回収頻度のご相談やコストセーブな分別のアドバイスから、グリストラップ清掃、移転時のごみの処分など</dd>
+                    <dt><span class="underline_green">あらゆる業種の事業</span>ゴミに対応しています</dt>
+                    <dd>飲食店、美容室・理容室、エステサロン、学校・学習塾、スポーツジム・フィットネス、etc…</dd>
+                    <dt>古紙・段ボールの<span class="underline_green">無料定期回収</span>・<span class="underline_green">買い取りも！</span></dt>
+                    <dd>捨てるのにお金がかかっていたゴミが「有価物」かどうかも診断させていただきます。無料回収または買取できる可能性も！</dd>
+                </dl>
+            </div>
+
+        </section>
+
+<!-- key_visual end -->
+
+<!-- service_area_content sec01 begin -->
+        <section class="service_area_content sec01">
+            <h2 class="sec01_title">事業ゴミの処分にかかるコストを<br>
+                できるだけ<span>削減したい、見直したい…</span>
+            </h2>
+            <p class="sec01_pic"><img src="<?= $themePath; ?>/images/renewal/img_sec01_01.jpg" alt="事業ゴミの処分に悩んでいる経営者のイメージ" class=""></p>
+            <h3 class="sec01_subtitle">
+                <img src="<?= $themePath; ?>/images/renewal/img_sec01_02.png" alt="DSPなら、古紙・ダンボール などの買取も合わせてご提案できるので、大幅にコストカットできる場合がございます！" class="">
+            </h3>
+            <div class="sec01_notes">
+                <h4 class="sec01_notes_title">
+                    捨てるのにお金がかかっていたゴミが<br>
+                    <span>無料回収</span>or<span>買取</span>できる？
+                </h4>
+                <dl class="sec01_notes_ex">
+                    <dt class="sec01_notes_ex_title">買取可能なリサイクル資源の例</dt>
+                    <dd class="sec01_notes_ex_content">
+                        <div class="pic">
+                            <img src="<?= $themePath; ?>/images/renewal/img_sec01_pic01.jpg" alt="">
+                            <h5 class="title">ダンボール</h5>
+                        </div>
+                        <div class="pic">
+                            <img src="<?= $themePath; ?>/images/renewal/img_sec01_pic02.jpg" alt="">
+                            <h5 class="title">古紙</h5>
+                        </div>
+                    </dd>
+                </dl>
+                <p class="sec01_notes_text">今まで捨てるのにお金がかかっていたゴミも、<span>実は売ることができる「有価物」の場合があります。</span>内容や量に応じて、<span>無料で回収できたり、買取によって利益を生む可能性があります！</span><br>
+                DSPでは、買取できる品目なども踏まえて、お客様のご要望に合わせた柔軟な定期回収プランのご提案を得意としています。<br>
+                お悩みの方は、是非一度ご相談ください！</p>
+            </div>
+        </section>
+
+        <!-- service_area_content sec01 end -->
+
+        <section class="service_area_content sec02">
+            <h2 class="sec02_title">
+                <img src="<?= $themePath; ?>/images/renewal/img_sec02_title.jpg" alt="事業ゴミにまつわるこんなお悩みありませんか？">
+            </h2>
+            <ul class="sec02_worries">
+                <li class="sec02_worries_item">開業準備で忙しい・時間がない！<br>
+                    <span class="text-yellow">即日対応してほしい</span>
+                </li>
+                <li class="sec02_worries_item">ゴミ処理にかかる
+                    <span class="text-green">費用を<br>見直したい… </span>
+                </li>
+                <li class="sec02_worries_item"><span class="text-green">たくさんの種類のゴミ</span>を<br>
+                    どう処分したらいいかわからない
+                </li>
+                <li class="sec02_worries_item"><span class="text-green">ダンボールや古紙は</span><span class="text-yellow">買取</span>してもらえる<br>
+                    って本当？<br>
+                    少しでも<span class="text-yellow">費用を安く</span>できるなら…
+                </li>
+                <li class="sec02_worries_item">地域のゴミ回収では間に合わないので<br>
+                    <span class="text-green">業者に頼みたい</span>
+                </li>
+                <li class="sec02_worries_item"><span class="text-green">系列の店舗や関連会社</span>の廃棄物を<br>
+                    <span class="text-yellow">一元管理</span>してほしい
+                </li>
+            </ul>
+            <div class="sec02_works">
+                <h3 class="sec02_works_title">
+                    <span><img src="<?= $themePath; ?>/images/renewal/img_sec02_subtitle.png" alt="累計 2000 社以上！"></span>
+                    あらゆる業種の事業ゴミ定期回収を<br>
+                    お任せいただいています
+                </h3>
+                <p class="sec02_works_pic">
+                    <img src="<?= $themePath; ?>/images/renewal/img_sec02_pic01.png" alt="飲食店、美容院・理容室、ジム・フィットネス、エステサロン、店舗・オフィス全般、工場・倉庫、民泊・ホテル、病院・クリニック">
+                </p>
+                <p class="sec02_works_text">
+                    下記のような、さまざまな種類のゴミの回収や<br>
+                    リサイクル資源の買取をお引き受けします。
+                </p>
+                <ul class="sec02_works_resources">
+                    <li class="sec02_works_resources_item">事業系一般廃棄物</li>
+                    <li class="sec02_works_resources_item">産業廃棄物</li>
+                    <li class="sec02_works_resources_item">特別管理産業廃棄物</li>
+                    <li class="sec02_works_resources_item">古紙</li>
+                    <li class="sec02_works_resources_item">ダンボール</li>
+                    <li class="sec02_works_resources_item">木くず</li>
+                    <li class="sec02_works_resources_item">発泡スチロール</li>
+                    <li class="sec02_works_resources_item">ビン・缶・ペットボトル</li>
+                    <li class="sec02_works_resources_item">金属</li>
+                    <li class="sec02_works_resources_item">プラスチック</li>
+                </ul>
+                <p class="sec02_works_pic sec02_works_pic02">
+                    <img src="<?= $themePath; ?>/images/renewal/img_sec02_pic02.jpg" alt="リサイクル資源のイメージ画像">
+                </p>
+                <h4 class="sec02_works_catch">
+                    処分に困っているゴミの回収や、買取のご相談も<br>
+                    ぜひ、お気軽にお問い合わせください！
+                </h4>
+            </div>
+        </section>
+
+        <section class="service_area_cta">
+            <h2 class="hide">お見積り無料！まずはお気軽にご相談ください</h2>
+            <div class="btn_wrapper cta">
+                <h3>WEBフォームでお問い合わせ</h3>
+                <a href="/contact/">
+                    <img src="<?= $themePath; ?>/images/renewal/img_btn_cta01.png" alt="30秒で入力完了！無料お見積もりはこちら" class="btn btn01">
+                </a>
+            </div>
+            <div class="btn_wrapper cta">
+                <h3>お電話でお問い合わせ</h3>
+                <a href="tel:0358306777">
+                    <img src="<?= $themePath; ?>/images/renewal/img_btn_cta02.png" alt="TEL:03-5830-6777 平日9:00〜18:00 土曜9:00〜17:00 日祝休業" class="btn btn02">
+                </a>
+            </div>
+        </section>
+
+        <section class="service_area_content sec03">
+            <h2 class="sec03_title">
+                <img src="<?= $themePath; ?>/images/renewal/img_sec03_title.png" alt="DSPが選ばれる理由">
+            </h2>
+            <ul class="sec03_points">
+                <li class="sec03_points_item">
+                    <h3 class="title"><span class="text-green">コスト削減</span>ならお任せください！<br>
+                        最適な定期回収プランをご提案</h3>
+                    <div class="content">
+                        <p class="text">
+                            現在のご状況やコスト感、抱えている課題、想定される廃棄物の種類・量・頻度、その他ご要望等をお伺いした上で、<span class="text-green">お客様に合わせた最善のプランをご提案</span>させていただきます。
+                        </p>
+                        <ul class="catch">
+                            <li>「今よりも費用を抑えたい」</li>
+                            <li>「他の業者には対応して<br class="sp_only">もらえなかった」</li>
+                            <li>「系列店の回収もまとめて依頼して<br class="sp_only">効率化・コストカットしたい」</li>
+                        </ul>
+                        <p class="text">
+                            などなど、具体的なお困りごとがございましたらお気軽にご相談ください！
+                        </p>
+                        <p class="pic round">
+                            <img src="<?= $themePath; ?>/images/renewal/img_sec03_pic01.jpg" alt="">
+                        </p>
+                    </div>
+                </li>
+                <li class="sec03_points_item">
+                    <h3 class="title">お急ぎの場合もご相談ください！<br>
+                        <span class="text-green">最短即日〜スピード対応可能</span></h3>
+                    <div class="content">
+                        <p class="text">
+                            急に必要になった時、開業準備で忙しく手配が間に合っていなかった時など、お急ぎの際には<span class="text-green">スピード対応が自慢</span>のDSPにご相談ください。<br>
+                            <span class="text-green">他の業者で断られたようなケースでも、できる限りご要望に添えるように尽力いたします。</span><br>
+                            知識と経験が豊富なDSPだからこそ、スムーズなやりとりと迅速な対応が可能です。<br>
+                            業者に依頼するのが初めての方でも、安心してお任せください。
+                        </p>
+                        <p class="pic">
+                            <img src="<?= $themePath; ?>/images/renewal/img_sec03_pic02.png" alt="スピード対応">
+                        </p>
+                    </div>
+                </li>
+                <li class="sec03_points_item">
+                    <h3 class="title"><span class="text-green"><span class="large">2000</span>社を超える実績！</span><br>
+                        <span class="small">個人経営から大手企業まで幅広く対応</span>
+                    </h3>
+                    <div class="content">
+                        <p class="text">
+                            DSPには、<span class="text-green">個人経営の方から、チェーン展開する大手企業</span>まで、幅広い事業者様のゴミ回収をお任せいただいてきた実績がございます。<br>
+                            どんな規模や業種でも対応可能ですので、安心してお任せください。<br>
+                            事業ゴミにまつわるお困りごとやお悩みごとは、DSPがまとめて解消いたします！
+                        </p>
+                        <p class="pic round">
+                            <img src="<?= $themePath; ?>/images/renewal/img_sec03_pic03.jpg" alt="">
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="service_area_content sec04">
+            <h2 class="sec04_title">
+                <img src="<?= $themePath; ?>/images/renewal/img_sec04_title.png" alt="実際にご利用いただいたお客様の事例">
+            </h2>
+            <ul class="sec04_cases">
+                <li class="sec04_cases_item">
+                    <h3 class="title">スポーツジムの<span>事業ゴミ定期回収</span><br>
+                        <span>古紙のシュレッダー処理</span></h3>
+                    <dl class="detail">
+                        <dt class="detail_title">DSPにご依頼いただいた内容</dt>
+                        <dd class="detail_content">
+                            一般廃棄物回収／月間200kg<br>
+                            古紙のシュレッダー処理
+                            <img src="<?= $themePath; ?>/images/renewal/img_sec04_pic01.jpg" alt="" class="pic">
+                        </dd>
+                    </dl>
+                    <p class="profile">スポーツジム 運営会社　Aさん</p>
+                    <p class="text">
+                        20店舗のゴミやダンボール・チラシなどの回収をお願いしています。<br>
+                        今までは20店舗１つ１つ契約書を結び、それぞれの回収業者と調整し、何か問題があれば、20店舗分を総務が管理していました。正直ゴミの業務で追われ、本来の総務の仕事がはかどらないことがありました。<br>
+                        <span>ゴミ回収と併せて顧客情報のシュレッダー処理もお任せしています。DSPさんは心から信頼できる業者さんです！</span>
+                    </p>
+                </li>
+                <li class="sec04_cases_item">
+                    <h3 class="title">飲食店の<span>事業ゴミ定期回収</span></h3>
+                    <dl class="detail">
+                        <dt class="detail_title">DSPにご依頼いただいた内容</dt>
+                        <dd class="detail_content">
+                            一般廃棄物・産業廃棄物の回収／月間800kg<br>
+                            （調理残渣、可燃ゴミ、空きビン等） 
+                            <img src="<?= $themePath; ?>/images/renewal/img_sec04_pic02.jpg" alt="" class="pic">
+                        </dd>
+                    </dl>
+                    <p class="profile">個人経営飲食店 オーナー Sさん</p>
+                    <p class="text">
+                        飲食店の為、生ごみ、紙ごみ、空きビンや、時々出る粗大ゴミなどの回収をお願いしています。<br>
+                        以前はゴミが少量の為、一般の家庭ごみと同じ市区町村のゴミ回収でお願いしていましたが、客数も増え、<span>一般の家庭ごみとしてゴミを出すことが難しくなりました。</span><br>
+                        そんな時、DSPさんに出会い、回収をお願いしたことで回収頻度や回収場所・費用など親身に相談に乗っていただき、ご提案を頂いたことで、<span>今は悩みからも解放されストレスフリーです！</span>
+                    </p>
+                </li>
+                <li class="sec04_cases_item">
+                    <h3 class="title">美容室の<span>事業ゴミ定期回収</span></h3>
+                    <dl class="detail">
+                        <dt class="detail_title">DSPにご依頼いただいた内容</dt>
+                        <dd class="detail_content">
+                            一般廃棄物・産業廃棄物の回収／月間180kg<br>
+                            （毛髪、カラー剤、チューブ、粗大ゴミ等） 
+                            <img src="<?= $themePath; ?>/images/renewal/img_sec04_pic03.jpg" alt="" class="pic">
+                        </dd>
+                    </dl>
+                    <p class="profile">美容室複数経営 オーナー Mさん</p>
+                    <p class="text">
+                        美容室を70店舗経営しています。最初は各店舗ごとにゴミの処分を任せていました。<br>
+                        DSPさんに依頼したことで、契約書や業者との調整をワンストップで行っていただくことができ、<span>今までのコストよりもセーブすることができました。また、本部で一元管理できるので経理処理なども楽になり助かりました！</span>
+                    </p>
+                </li>
+                <li class="sec04_cases_item">
+                    <h3 class="title">物流倉庫の<span>事業ゴミ定期回収</span><br>
+                        <span>ダンボール買取</span>
+                    </h3>
+                    <dl class="detail">
+                        <dt class="detail_title">DSPにご依頼いただいた内容</dt>
+                        <dd class="detail_content">
+                            産業廃棄物の定期回収／月間1500kg<br>
+                            （木パレット、発泡スチロール、ビニール、<br>
+                            ストレッチフィルム、PPバンド等）<br>
+                            ダンボール買取3000kg
+                            <img src="<?= $themePath; ?>/images/renewal/img_sec04_pic04.jpg" alt="" class="pic">
+                        </dd>
+                    </dl>
+                    <p class="profile">配送センター 責任者 Yさん</p>
+                    <p class="text">
+                        大手企業の商品を扱う、物流倉庫・配送センターで責任者を務めています。<br>
+                        倉庫から出る大量なダンボールを、DSPさんでは<span>以前の業者の倍の金額で買取してもらえる</span>ので、大変助かっています！</span>
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="service_area_info">
+            <div class="service_area_info_header">
+                <h2 class="service_area_name">
+                    <span class="text-green"><?= esc_html($pref); ?><?php the_title(); ?></span><span class="sub">で</span><br>
+                    事業ゴミ<span class="sub">の</span>定期回収業者<span class="sub">を</span><br>
+                    お探しの事業者様へ
+                </h2>
+            </div>
+            <div class="service_area_list">
+                <h3>DSPの対応エリア</h3>
+                <div class="service_area_list_text">
+                    <div>
+                        <?= get_field('support_area'); ?>
+                    </div>
+                    <p class="service_area_list_catch">
+                        上記以外でも対応可能な場合がございます！<br>
+                        お困りの際にはお気軽にお問い合わせください。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="service_area_info_detail">
+                <h3>
+                    <?php the_title(); ?>エリアについて
+                </h3>
+                <div class="service_area_content_text">
+                    <?php the_content(); ?>
+                    <p class="service_area_link">
+                        <a href="/industrial-waste/<?php echo get_post_field( 'post_name', get_the_ID() ); ?>/"><?php the_title(); ?>の産業廃棄物回収ならDSPへ</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="service_area_info_pic">
+                <h3>
+                    <img src="<?= $themePath; ?>/images/renewal/img_sec_area.png" alt="複数店舗まとめてのご依頼や、関東エリア以外の一部地域への回収もご相談ください。東京都/神奈川県/千葉県/埼玉県/茨城県/群馬県/栃木県 関東エリア全域対応中！" class="">
+                </h3>
+            </div>
+        </section>
+
+        <section class="service_area_cta">
+            <h2 class="hide">お見積り無料！まずはお気軽にご相談ください</h2>
+            <div class="btn_wrapper cta">
+                <h3>WEBフォームでお問い合わせ</h3>
+                <a href="/contact/">
+                    <img src="<?= $themePath; ?>/images/renewal/img_btn_cta01.png" alt="30秒で入力完了！無料お見積もりはこちら" class="btn btn01">
+                </a>
+            </div>
+            <div class="btn_wrapper cta">
+                <h3>お電話でお問い合わせ</h3>
+                <a href="tel:0358306777">
+                    <img src="<?= $themePath; ?>/images/renewal/img_btn_cta02.png" alt="TEL:03-5830-6777 平日9:00〜18:00 土曜9:00〜17:00 日祝休業" class="btn btn02">
+                </a>
+            </div>
+        </section>
+
+        <section class="service_area_content service_area_faq padding-10px">
+            <h3>よくあるご質問</h3>
+            <div class="service_area_content_txt service_area_q_and_a">
+                <section class="q_and_a_wrapper_service_area">
+                    <div class="page_inner_fixed">
+                        <div class="q_and_a_inner">
+                            <ul>
+                                <li>
+                                    <input id="qa-check1" class="qa-check" type="checkbox" checked>
+                                    <label class="qa-label qa-label-servicearea" for="qa-check1">対応可能なエリアはどこまでですか？</label>
+                                    <div class="qa-content qa-content-servicearea">
+                                        <p>関東圏内であれば対応可能です。関西、東北などの一部エリアも対応できる場合がございますので、お困りの際にはお問い合わせください。</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <input id="qa-check2" class="qa-check" type="checkbox">
+                                    <label class="qa-label qa-label-servicearea" for="qa-check2">系列店や別店舗も一緒に回収してもらえますか？</label>
+                                    <div class="qa-content qa-content-servicearea">
+                                        <p>もちろん可能です。複数店舗まとめてのご依頼の場合、料金もお安く対応できる場合がございます。まずはお気軽にご相談ください。</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <input id="qa-check3" class="qa-check" type="checkbox">
+                                    <label class="qa-label qa-label-servicearea" for="qa-check3">古紙・ダンボールを買い取ってもらえれば、ゴミの回収にかかる料金が安くなりますか？</label>
+                                    <div class="qa-content qa-content-servicearea">
+                                        <p>はい、ご認識のとおりです。具体的には、回収できる品目や量、頻度によってお見積りも変動いたします。回収内容によっては、無料回収、買取のほか、有料での回収となる場合もございますが、できる限りご満足いただけるプランをご提案いたします。</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <input id="qa-check4" class="qa-check" type="checkbox">
+                                    <label class="qa-label qa-label-servicearea" for="qa-check4">現在の業者より安く対応してもらえるところを探しています。相談できますか？</label>
+                                    <div class="qa-content qa-content-servicearea">
+                                        <p>もちろん可能です。現在の費用感やご要望などを添えて、まずはお気軽にご相談ください。</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <input id="qa-check5" class="qa-check" type="checkbox">
+                                    <label class="qa-label qa-label-servicearea" for="qa-check5">急ぎで業者を探しています。最短でいつ回収可能ですか？</label>
+                                    <div class="qa-content qa-content-servicearea">
+                                        <p>最短即日〜から対応可能です。お電話でのお問い合わせも受け付けておりますので、お急ぎの場合もご連絡ください。</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <input id="qa-check6" class="qa-check" type="checkbox">
+                                    <label class="qa-label qa-label-servicearea" for="qa-check6">どんな業種やゴミの種類に対応していますか？</label>
+                                    <div class="qa-content qa-content-servicearea">
+                                        <p>DSPでは、あらゆる業種の事業ゴミ回収に対応しております。<br>
+                                        実際にお任せいただいた業種や、それぞれの事業ゴミの例を挙げておりますので、是非ご参考ください。<br>
+                                        ※下記に記載の無い業種やゴミの種類でも対応可能ですので、お気軽にご相談ください。</p>
+                                        
+                                        <h4>・飲食店・居酒屋・レストラン</h4>
+                                        <p>生ごみ、残飯、廃油、ビンなどの一般廃棄物の定期回収</p>
+
+                                        <h4>・学習塾、専門学校、学校法人（小・中・高・大学）</h4>
+                                        <p>ビン・缶・ペットボトルなどの一般廃棄物の定期回収、教科書やコピー用紙など大量に余った古紙の買取・無料回収、テスト用紙や個人情報の機密文書のシュレッダー処理</p>
+
+                                        <h4>・民泊、ホテル、ゲストハウス、宿泊施設</h4>
+                                        <p>ビン・缶・ペットボトル、可燃ゴミ、アメニティなどの一般廃棄物の定期回収</p>
+
+                                        <h4>・コンビニ、スーパー、ホームセンター、ドラッグストアなどの店舗</h4>
+                                        <p>ビン・缶・ペットボトルなど、回収ボックスのゴミの定期回収<br>
+                                        大量のダンボールの買取・無料回収</p>
+
+                                        <h4>・介護福祉施設（老人ホーム、デイケアサービス、グループホームなど）</h4>
+                                        <p>紙おむつなどを含む一般廃棄物の定期回収</p>
+
+                                        <h4>・病院・歯医者・クリニック・診療所</h4>
+                                        <p>一般廃棄物や感染系廃棄物の定期回収、ガーゼ、包帯、脱脂綿、紙おむつ、注射針、点滴、体温計、試験管などの検査器具の処理</p>
+
+                                        <h4>・倉庫（会社の倉庫、物流倉庫）</h4>
+                                        <p>一般廃棄物、粗大ごみ、PPバンド、梱包用プラスチック類、発泡スチロールなどの定期回収<br>
+                                        大量のダンボールの買取・無料回収</p>
+
+                                        <h4>・工場、食品加工工場</h4>
+                                        <p>動植物性残渣、排水処理汚泥、廃油、鉄スクラップ、空き缶などの産業廃棄物や、紙袋、納品書などの一般廃棄物の定期回収<br>
+                                        大量のダンボールの買取・無料回収</p>
+
+                                        <h4>・美容院、ヘアサロン、理容室、エステ、リラクゼーションサロン</h4>
+                                        <p>髪の毛、ウィッグ、カラー材などのゴミの定期回収、椅子、ローラーボール、エステベッドなどの粗大ゴミのスポット回収</p>
+
+                                        <h4>・オフィス、ビル</h4>
+                                        <p>プラスチックごみなどの一般廃棄物、パソコン、OA機器、オフィス家具などの粗大ごみ、産業廃棄物の定期回収<br>
+                                        大量の古紙・ダンボールの買取・無料回収、個人情報や機密文書のシュレッダー処理</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <input id="qa-check7" class="qa-check" type="checkbox">
+                                    <label class="qa-label qa-label-servicearea" for="qa-check7">土日祝・年末年始でも回収してもらえますか？</label>
+                                    <div class="qa-content qa-content-servicearea">
+                                        <p>できる限りご要望にお応えできるように調整いたしますので、お気軽にご相談ください。</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <input id="qa-check8" class="qa-check" type="checkbox">
+                                    <label class="qa-label qa-label-servicearea" for="qa-check8">回収の時間帯は何時ごろになりますか？</label>
+                                    <div class="qa-content qa-content-servicearea">
+                                        <p>基本的には深夜・早朝の時間帯となりますが、場合によっては日中にかけて回収させていただくこともございます。特別なご事情やご要望がある場合はあらかじめご相談ください。</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+    </div>
+    <?php
+endwhile;
+endif;
+?>
+</div>
+
+<?php get_footer(); ?>

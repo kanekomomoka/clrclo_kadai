@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React入門</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19.1.0/?dev";
+    import ReactDOMClient from "https://esm.sh/react-dom@19.1.0/client/?dev";
+
+    // ここにReactのコードを書いていきます
+    const domNode = document.getElementById('app');
+    const root = ReactDOMClient.createRoot(domNode);
+
+    // header START
+    function Header() {
+      return (
+        <header>
+          <Title />
+          <Navigation />
+        </header>
+      );
+    }
+
+    function Title() {
+      return <h1>Top Page</h1>;
+    }
+
+    function Navigation() {
+      return(
+        <nav>
+          <a href="#">Home</a> | <a href="#">About</a>
+        </nav>
+      );
+    }
+    // header END
+    
+  // Content START
+    function Content() {
+      return (
+        <div>
+          <Article />
+        </div>
+      );
+    }
+
+    function Article() {
+      return (
+        <article>
+          <h2>ようこそ！</h2>
+          <p>ここはメインコンテンツです！</p>
+        </article>
+      );
+    }
+
+     // Footer START
+    function Footer() {
+      return <small>&copy; 2025 Yuta Nakamura</small>;
+    }
+
+    function HomePage() {
+      return (
+        <div>
+          <Header />
+          <Content />
+          <Footer />
+        </div>
+      )
+    }
+
+    root.render(<HomePage />);
+  </script>
+</body>
+</html>

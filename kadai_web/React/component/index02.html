@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React入門</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19.1.0/?dev";
+    import ReactDOMClient from "https://esm.sh/react-dom@19.1.0/client/?dev";
+
+        // ここにReactのコードを書いていきます
+    const domNode = document.getElementById('app');
+    const root = ReactDOMClient.createRoot(domNode);
+
+    function UserName(){
+      return <span>kaneko momoka </span>;
+    }
+    
+    function App(){
+      return(
+        <div>
+          <h1>作成者：<UserName /></h1>
+          <h1>レビュー担当：<UserName /></h1>
+          <h1>&copy; ：<UserName /></h1>
+        </div>
+      );
+    }
+    root.render(<App />);
+</script>
+</body>
+</html>

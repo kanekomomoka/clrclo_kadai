@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="text/javascript">
+    // app要素を取得
+    const app = document.getElementById('app');
+
+    // h2要素を作成
+    const header = document.createElement('h2');
+
+    // 表示テキストを作成
+    const text = 'Hello, JavaScript DOM!';
+    const headerContent = document.createTextNode(text);
+
+    // テキストをh2要素に追加
+    header.appendChild(headerContent);
+
+    // h2要素をapp要素に追加
+    app.appendChild(header);
+  </script>
+</body>
+</html>
